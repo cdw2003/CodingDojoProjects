@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Disappearing Ninja</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $('img').click(function(){
+               $(this).hide();
+          });
+          $("button").click(function(){
+            $("img").show();
+          });
+        })
+      </script>
+    </head>
+    <body>
+      <div id="container">
+        <h1>Disappearing Ninjas!</h1>
+        <div id="boxes">
+          <div id="toprow">
+            <img class="food" src="images/beans.jpg" alt="Beans">
+            <img class="food" src="images/grapes.jpg" alt="Grapes">
+            <img class="food" src="images/salad.jpg" alt="Salad">
+            <img class="food" src="images/dessert.jpg" alt="Dessert">
+          </div>
+          <div id='secondrow'>
+            <img class="beverages" src="images/coffee.jpg" alt="Coffee">
+            <img class="beverages" src="images/tea.jpg" alt="Tea">
+            <img class="beverages" src="images/wine.jpg" alt="Wine">
+            <img class="beverages" src="images/milkshake.jpg" alt="Milkshake">
+          </div>
+        </div>
+        <button>Restore</button>
+      </div>
+    </body>
+  </html>

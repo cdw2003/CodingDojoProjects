@@ -1,0 +1,24 @@
+*{
+ margin: 0px;
+ padding: 0px;
+}
+#container{
+ width: 970px;
+ background-color: #d4d2ae;
+ margin: 10px auto;
+padding: 20px;
+}
+#boxes {
+  margin-left: 100px;
+  margin-top: 15px;
+}
+.food {
+  width: 200px;
+  height: 130px;
+  margin-top: 3px;
+}
+.beverages {
+  width: 200px;
+  height: 130px;
+  margin-top: 3px;
+}
