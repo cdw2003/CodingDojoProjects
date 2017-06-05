@@ -1,0 +1,40 @@
+*{
+ margin: 0px;
+ padding: 0px;
+}
+#images{
+  display: inline-block;
+  width: 60%;
+}
+#pokedex{
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+}
+.poke{
+  display: inline-block;
+  margin: 20px;
+  width: 200px;
+  height: 350px;
+  border: 5px solid red;
+}
+.pokename{
+  text-align: center;
+}
+.pokeheader{
+  margin: 10px;
+  font-style: bold;
+  font-weight: 14px;
+}
+.pokecontent{
+  margin: 10px;
+  font-size: 13px;
+  font-weight: normal;
+}
+.pokelist{
+  margin: 10px;
+  margin-left: 25px;
+  font-size: 12px;
+  font-weight: normal;
+
+}
