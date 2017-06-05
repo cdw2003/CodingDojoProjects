@@ -1,0 +1,120 @@
+*{
+ margin: 0px;
+ padding: 0px;
+}
+#wrapper{
+  background-color: #eeeeee;
+  padding-left: 25px;
+}
+#blueboxheaders{
+  color: #f95859;
+  padding: 15px;
+  font-weight: bold;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 125px;
+  margin-left: -15px;
+}
+#blueboxheaders p{
+  width: 20px;
+}
+#rightboxheaders{
+  color: #f95859;
+  padding: 15px;
+  font-weight: bold;
+  display: inline-flex;
+  justify-content: space-around;
+  width: 890px;
+  margin-left: 20px;
+}
+.blue{
+  background-color: #689bff;
+  width: 50px;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #8d98ad;
+  margin-top: 2px;
+}
+.yellow{
+  background-color: #fecb00;
+  width: 50px;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #8d98ad;
+  margin-top: 2px;
+}
+.pink{
+  background-color: #fd9a98;
+  width: 50px;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #8d98ad;
+  margin-top: 2px;
+}
+.green{
+  background-color: #1fca21;
+  width: 50px;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #8d98ad;
+  margin-top: 2px;
+}
+#blueboxes{
+  margin-left: 10px;
+  display: inline-block;
+}
+#blueboxes span{
+  margin-right: 15px;
+}
+#pinkboxes{
+  margin-left: 20px;
+  display: inline-block;
+}
+#yellowboxes{
+  display: inline-block;
+}
+#greenboxes{
+  margin-top: 25px;
+  padding-bottom: 25px;
+}
+#row1yellow{
+  position: absolute;
+  right: 194px;
+  top: 65px;
+}
+#greenboxlabels{
+  display: inline-block;
+}
+#greenboxlabels p{
+  color: #f95859;
+  display: block;
+  width: 50px;
+}
+.asterisk{
+  display: flex;
+}
+#greenboxrows{
+  display: inline-block;
+  position: relative;
+  left: 25px;
+}
+.greenrowlabel{
+  display: flex;
+  padding: 20px;
+}
+.asterisk{
+  display: flex;
+  position: relative;
+  right: -80px;
+}
+.row h3{
+  color: #1710a2;
+}
+.row p{
+  font-size: 11px;
+}
+.row span{
+  color: #f95859;
+  font-weight: bold;
+  vertical-align: 50%;
+}
