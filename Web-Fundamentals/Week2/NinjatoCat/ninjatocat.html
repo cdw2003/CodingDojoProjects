@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <title>Ninja to Cat</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <script type="text/javascript" src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $("img").click(function(){
+            var newsrc = $(this).attr('data-alt-src');
+            $(this).attr("src", newsrc);
+        });
+      })
+      </script>
+    </head>
+    <body>
+      <div id="container">
+        <h1>Ninja to Cat</h1>
+        <div id="boxes">
+          <div id="cat_image">
+            <img class="cat" src="images/cat0.png" data-alt-src="images/ninja0.png">
+            <img class="cat" src="images/cat1.png" data-alt-src="images/ninja1.png">
+            <img class="cat" src="images/cat2.png" data-alt-src="images/ninja2.png">
+            <img class="cat" src="images/cat3.png" data-alt-src="images/ninja3.png">
+            <img class="cat" src="images/cat4.png" data-alt-src="images/ninja4.png">
+          </div>
+          <div id="ninja_image">
+            <img class="ninja" src="images/ninja0.png" data-alt-src="images/cat0.png">
+            <img class="ninja" src="images/ninja1.png" data-alt-src="images/cat1.png">
+            <img class="ninja" src="images/ninja2.png" data-alt-src="images/cat2.png">
+            <img class="ninja" src="images/ninja3.png" data-alt-src="images/cat3.png">
+            <img class="ninja" src="images/ninja4.png" data-alt-src="images/cat4.png">
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
