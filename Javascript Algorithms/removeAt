@@ -1,0 +1,8 @@
+function removeAt(arr, ind){
+  var temp = arr[ind];
+  for(var i = ind + 1; i<arr.length; i++){
+    arr[i-1] = arr[i]
+  }
+  arr.pop()
+  return arr;
+}
