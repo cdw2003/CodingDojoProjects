@@ -1,0 +1,10 @@
+function rotate(arr, offset){
+  var newArr = [];
+  for(var i=1; i<=offset; i++){
+    newArr[offset-i] = arr[arr.length-i];
+  }
+  for(var j=0; j<arr.length-offset; j++){
+    newArr[offset+j] = arr[j];
+  }
+  return newArr;
+}
