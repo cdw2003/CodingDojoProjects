@@ -1,0 +1,9 @@
+function popFront(arr){
+  var temp = arr[0];
+  for(var i=1; i<arr.length; i++){
+    arr[i-1] = arr[i];
+  }
+  arr.pop();
+  console.log(arr)
+  return temp;
+}
