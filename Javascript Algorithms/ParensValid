@@ -1,0 +1,16 @@
+function ParensValid(str){
+  var Open = 0;
+  var Close = 0;
+  for(var i = 0; i < str.length; i++){
+    if (str[i] == "("){
+      Open += 1
+    }
+    if (str[i] == ")"){
+      Close -= 1
+    }
+    if(Open + Close < 0){
+      return false;
+    }
+  }
+ return Open + Close == 0;
+}
