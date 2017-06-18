@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>The Wall</title>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <style>
+      #wrapper{
+        padding-left: 25px;
+        padding-top: 5px;
+        background-color: #d3d3d3;
+        color: #000080;
+        font-family: 'Varela Round', serif;
+      }
+      a{
+        border: 1px solid #000080;
+        background-color: #000080;
+        color: white;
+        text-decoration: none;
+        padding: 2px;
+        border-radius: 5px;
+        font-size: 12px;
+      }
+      .postbox{
+        width: 500px;
+        height: 150px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+      }
+      form{
+        margin-top: 50px;
+        font-size: 15px;
+        margin-bottom: 50px;
+      }
+      #commentbox{
+        margin-left: 50px;
+      }
+      .commentbox{
+        width: 500px;
+        height: 50px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+      }
+      .comment{
+        margin-left: 50px;
+        font-size: 13px;
+        color: #996699;
+      }
+      #comment{
+        margin-bottom: 35px;
+      }
+      #comment h5{
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id = "wrapper">
+      <h1>Coding Dojo Wall</h1>
+      <p>Welcome {{first_name}}, to the site!</p>
+      <a href='/logout'>log off</a><br>
+      <form action="/posts" method="post">
+          <label for = "message">Post a Message:</label><br><br>
+          <textarea class='postbox' type='text' name='message'></textarea><br><br>
+          <input type='submit' value='Submit'>
+      </form>
+      {% for message in messages %}
+      <h3>{{message.first_name}} {{message.last_name}} - {{message.created_at.strftime('%B ''%d ''%Y')}}</h3>
+      <p class="message">{{message.message}}</p>
+        {% for comment in comments%}
+          {% if message.message_id == comment.message_id%}
+           <div id = "comment">
+            <h5 class="comment">{{comment.first_name}} {{comment.last_name}} - {{message.created_at.strftime('%B ''%d ''%Y')}}</h5>
+            <p class="comment">{{comment.comment}}</p>
+          </div>
+           {% endif %}
+         {% endfor %}
+        <div id="commentbox">
+          <form action="/comments/{{message.message_id}}" method="post">
+            <label for = "comment">Post a Comment:</label><br><br>
+            <textarea class='commentbox' type='text' name='comment'></textarea><br><br>
+            <input type='submit' value='Submit'><br><br>
+          </form>
+      </div>
+       {% endfor %}
+    </div>
+  </body>
+</html>
