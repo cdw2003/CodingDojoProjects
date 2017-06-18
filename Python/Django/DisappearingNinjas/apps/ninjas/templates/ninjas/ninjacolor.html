@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Ninjas</title>
+    {% load staticfiles %}
+    <style>
+      h1{
+        text-align: center;
+        color: blue;
+      }
+      img{
+        margin-left: 325px;
+        height: 500px;
+        width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    {% if color == "blue" %}
+    <h1>Meet Leonardo!</h1>
+    <img src="{% static "ninjas/images/leonardo.jpg" %}" alt="">
+
+    {% elif color == "red" %}
+    <h1>Meet Raphael!</h1>
+    <img src="{% static "ninjas/images/raphael.jpg" %}" alt="">
+
+    {% elif color == "orange" %}
+    <h1>Meet Michelangelo!</h1>
+    <img src="{% static "ninjas/images/michelangelo.jpg" %}">
+
+    {% elif color == "purple" %}
+    <h1> Meet Donatello!</h1>
+    <img src="{% static "ninjas/images/donatello.jpg" %}" alt="">
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Four Ninjas</title>
+    {% load staticfiles %}
+    <style>
+    img{
+      margin-bottom: 10px;
+    }
+    a{
+      display: inline-block;
+      padding: 25px;
+      margin-top: 10px;
+      margin-left: 80px;
+    }
+    h3{
+      margin-left: 275px;
+    }
+    </style>
+  </head>
+  <body>
+    <img src="{% static 'ninjas/images/tmnt.png' %}">
+    <h3>Which ninja do you want to see?</h3>
+    <a href="ninjas/blue">Leonardo</a>
+    <a href="ninjas/orange">Michelangelo</a>
+    <a href="ninjas/red">Raphael</a>
+    <a href="ninjas/purple">Donatello</a>
+  </body>
+</html>
