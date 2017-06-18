@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Random Word Generator</title>
+    <style>
+      h3{
+        text-align: center;
+        margin-top: 25px;
+      }
+      #wordgenerator{
+        margin-left: 400px;
+      }
+      h1{
+        border: 1px solid black;
+        text-align: center;
+        padding: 15px;
+        width: 400px;
+      }
+      .generate{
+        margin-left: 175px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Random Word (attempt # {{request.session.count}})</h3>
+    <div id="wordgenerator">
+      <h1 class="word">{{request.session.word}}</h1>
+      <form class="generate" action="/word" method="post">
+      {% csrf_token %}
+        <input type="submit" name="submit" value="Generate">
+      </form>
+    </div>
+  </body>
+</html>
