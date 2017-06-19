@@ -1,0 +1,30 @@
+<html>
+    <head>
+      <title>Surprise Me!</title>
+      <style>
+        #header{
+          margin: 20px;
+          padding: 20px;
+        }
+        h1{
+          color: blue;
+        }
+        #resultsbox{
+          border: 1px solid black;
+          width: 250px;
+        }
+        p{
+          text-align: center;
+        }
+      </style>
+    <body>
+      <div id = "header">
+        <h1>Surprises:</h1>
+        <div id="resultsbox">
+          {% for i in Item %}
+          <p>{{i}}</p><br>
+          {% endfor %}
+        </div>
+      </div>
+    </body>
+</html>
