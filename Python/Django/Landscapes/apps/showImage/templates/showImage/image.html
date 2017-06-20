@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Landscapes</title>
+    {% load staticfiles %}
+  </head>
+  <body>
+    {% if image == "snow" %}
+      <img src="{% static 'showImage/images/snow.jpg' %}" alt=""/>
+
+    {% elif image == "desert" %}
+      <img src="{% static 'showImage/images/desert.jpg' %}" alt=""/>
+
+    {% elif image == "forest" %}
+      <img src="{% static 'showImage/images/forest.jpg' %}" alt=""/>
+
+    {% elif image == "vineyard" %}
+      <img src="{% static 'showImage/images/vineyard.jpg' %}" alt=""/>
+
+    {% elif image == "tropical" %}
+      <img src="{% static 'showImage/images/tropical.jpeg' %}" alt=""/>
+
+    {% elif image == "random" %}
+      {% if show == "one" %}
+        <img src="{% static 'showImage/images/random1.jpg' %}" alt=""/>
+      {% elif show == "two" %}
+        <img src="{% static 'showImage/images/random2.jpg' %}" alt=""/>
+      {% elif show == "three" %}
+        <img src="{% static 'showImage/images/random3.jpg' %}" alt=""/>
+      {% elif show == "four" %}
+        <img src="{% static 'showImage/images/random4.jpg' %}" alt=""/>
+      {% elif show == "five" %}
+        <img src="{% static 'showImage/images/random5.jpg' %}" alt=""/>
+      {% elif show == "six" %}
+        <img src="{% static 'showImage/images/random6.jpg' %}" alt=""/>
+      {% elif show == "seven" %}
+        <img src="{% static 'showImage/images/random7.jpg' %}" alt=""/>
+      {% elif show == "eight" %}
+        <img src="{% static 'showImage/images/random8.jpg' %}" alt=""/>
+      {% endif %}
+    {% endif %}
+  </body>
+</html>
