@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Full Stack Books</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'books/css/style.css' %}" charset="utf-8">
+  </head>
+  <body>
+    <div id = "header">
+      <table>
+        <tr>
+          <th>id</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Category</th>
+        </tr>
+      {% for book in books %}
+        <tr>
+          <td>{{book.id}}</td>
+          <td>{{book.title}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.category}}</td>
+        </tr>
+      {% endfor %}
+      </table>
+      <h1>Add a Book</h1>
+      <div id="form">
+        <form action="/books" method="post">
+          {% csrf_token %}
+          <div id = "title">
+            <label for="title">Title</label><br>
+            <input class='title' type='text' name='title'><br>
+          </div>
+          <div id = "author">
+            <label for="author">Author</label><br>
+            <input class='author' type='text' name='author'>
+          </div>
+          <div id = "category">
+            <label for="category">Category</label><br>
+            <input class='category' type='text' name='category'>
+          </div>
+            <input class = "button" type='submit' value='Submit'>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
