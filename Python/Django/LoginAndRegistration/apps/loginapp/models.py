@@ -19,7 +19,7 @@ class UsersManager(models.Manager):
 
         if first_name.isalpha() == False:
             invalid = True
-            message.append("First name must only contain letters!")
+            messages.append("First name must only contain letters!")
 
         if len(last_name) < 1:
             invalid = True
@@ -31,7 +31,7 @@ class UsersManager(models.Manager):
 
         if last_name.isalpha() == False:
             invalid = True
-            message.append("Last name must only contain letters!")
+            messages.append("Last name must only contain letters!")
 
         if len(email) < 1:
             invalid = True
