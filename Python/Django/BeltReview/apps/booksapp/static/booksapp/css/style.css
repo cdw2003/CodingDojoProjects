@@ -1,0 +1,50 @@
+*{
+ margin: 0px;
+ padding: 0px;
+}
+#container{
+  font-family: 'Arimo', sans-serif;
+  background-color:  #E5E7E9;
+  padding: 25px;
+  padding-left: 40px;
+}
+#welcome{
+  width: 200px;
+  vertical-align: top;
+}
+#navbar{
+  display: inline-block;
+  position: absolute;
+  right: 75px;
+  top: 25px;
+}
+h2{
+  margin-top: 50px;
+  margin-bottom: 10px;
+  vertical-align: top;
+}
+#bookreviews{
+  width: 650px;
+  display: inline-block;
+  margin-top: 25px;
+  margin-left: -205px;
+}
+#otherbooks{
+  display: inline-block;
+  width: 350px;
+  vertical-align: top;
+  margin-top: 25px;
+  margin-left: 150px;
+}
+#otherreviews{
+  border: 1px solid black;
+  padding: 10px;
+  overflow: auto;
+}
+.italic{
+  font-style: italic;
+}
+p{
+  margin-left: 25px;
+  margin-top: 5px;
+}

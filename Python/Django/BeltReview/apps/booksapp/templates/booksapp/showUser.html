@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Belt Reviewer</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '/booksapp/css/style.css' %}" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+  </head>
+  <style>
+    #container{
+      background-color: #E5E7E9;
+      font-family: 'Arimo', sans-serif;
+      padding: 20px;
+    }
+    h1{
+      color: #800080;
+    }
+    #topnav{
+      position: absolute;
+      right: 50px;
+      top: 30px;
+    }
+    a{
+      padding: 5px;
+    }
+    h3{
+      padding: 10px;
+    }
+    #otherbooks{
+      width: 100%
+    }
+    #otherbooks a{
+      padding: 10px;
+      margin-bottom: 5px;
+      position: absolute;
+      left: 20px;
+    }
+    h2{
+      position: relative;
+      left: -140px;
+      color: #800080;
+    }
+  </style>
+  <body>
+    <div id = "container">
+      <!-- top nav bar-->
+      <div id = "topnav">
+        <a href = "/books">Home</a>
+        <a href = "/add_book">Add Book and Review</a>
+        <a href = "/logout">Logout</a>
+      </div>
+      <!-- details about the user -->
+      <div id = "userdetails">
+        {% for user in users %}
+        <h1> Alias: {{user.alias}} </h1>
+        <h3> Name: {{user.name}} </h3>
+        <h3> Email: {{user.email}} </h3>
+        {% endfor %}
+        <h3> Total Reviews: {{num_reviews}} </h3>
+      </div>
+      <!-- list of other books the user has reviewed -->
+      <div id = "otherbooks">
+        <h2> Posted Reviews on the following Books: </h2>
+        {% for review in reviews %}
+        <a href = "/books/{{review.book_id}}">{{review.book.title}}</a><br><br>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Belt Reviewer</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '/booksapp/css/style.css' %}" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+  </head>
+  <style>
+  #container{
+    font-family: 'Arimo', sans-serif;
+    background-color:  #E5E7E9;
+    padding: 25px;
+    padding-left: 40px;
+  }
+  #welcome{
+    width: 200px;
+    vertical-align: top;
+  }
+  #navbar{
+    display: inline-block;
+    position: absolute;
+    right: 75px;
+    top: 25px;
+  }
+  h2{
+    margin-top: 25px;
+    margin-bottom: 10px;
+    vertical-align: top;
+    color: #800080;
+  }
+  #bookreviews{
+    width: 650px;
+    display: inline-block;
+    margin-top: 25px;
+    margin-left: 5px;
+  }
+  #otherbooks{
+    display: inline-block;
+    width: 350px;
+    vertical-align: top;
+    margin-top: 25px;
+    margin-left: 150px;
+  }
+  #otherreviews{
+    border: 1px solid black;
+    padding: 10px;
+    overflow: auto;
+  }
+  .italic{
+    font-style: italic;
+  }
+  .bold{
+    font-weight: bold;
+  }
+  p{
+    margin-left: 25px;
+    margin-top: 5px;
+  }
+  </style>
+  <body>
+    <div id = "container">
+      <!-- top nav bar and welcome message -->
+      <div id = "welcome">
+       <h1>Hello, {{name}}!</h1>
+     </div>
+     <div id = "navbar">
+       <a href = "/add_book">Add Book and Review</a>
+       <a href = "/logout">Logout</a>
+     </div>
+     <!-- list of book titles and recent reviews -->
+     <div id = "bookreviews">
+       <h2>Recent Book Reviews:</h2>
+       {% for book in books %}
+       <a href = "/books/{{book.id}}">{{book.title}}</a><br>
+          {% for review in reviews %}
+            {% if book.id == review.book_id %}
+            <p class = "bold">Rating: {{review.rating}}</p><br>
+            <p><a href = "/user/{{review.user_id}}">{{review.user.name}}</a> says:</p>
+            <p class= "italic">{{review.content}}</p><br>
+            <p class= "italic">Posted on {{review.created_at.date}}</p><br>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+     </div>
+     <!-- box with other books that have reviews -->
+     <div id = "otherbooks">
+       <h2>Other Reviews:</h2>
+       <div id = "otherreviews">
+       {% for review in reviews %}
+        <a href = "/books/{{review.book_id}}">{{review.book.title}}</a><br>
+       {% endfor %}
+     </div>
+     </div>
+    </div>
+ </body>
+</html>

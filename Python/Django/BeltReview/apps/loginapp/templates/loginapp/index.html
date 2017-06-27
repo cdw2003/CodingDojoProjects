@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>Login and Registration</title>
+    <style>
+      #register{
+      display: inline-block;
+      vertical-align: top;
+      }
+      #login{
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+    <div id = "register">
+      <h3>Registration</h3>
+      <form action="/register" method="post">
+        {% csrf_token %}
+          <input class='textbox' type='text' name='name' placeholder = "Name"><br><br>
+          <input class='textbox' type='text' name='alias' placeholder = "Alias"><br><br>
+          <input class='textbox' type='text' name='email' placeholder = "Email"><br><br>
+          <input class='textbox' type='password' name='password' placeholder = "Password"><br><br>
+          <input class='textbox' type='password' name='pwconfirm' placeholder = "Confirm Password"><br><br>
+          <input type='submit' value='Submit'>
+      </form>
+    </div>
+    <div id = "login">
+      <h3>Login</h3>
+      <form action="/login" method="post">
+        {% csrf_token %}
+          <input class='textbox' type='text' name='email' placeholder = "Email"><br><br>
+          <input class='textbox' type='password' name='password' placeholder = "Password"><br><br>
+          <input type='submit' value='Submit'>
+      </form>
+    </div>
+  </body>
+</html>

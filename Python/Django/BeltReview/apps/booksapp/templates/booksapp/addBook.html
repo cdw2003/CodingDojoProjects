@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> Belt Reviewer </title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '/booksapp/css/style.css' %}" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+  </head>
+  <style>
+  #container{
+    font-family: 'Arimo', sans-serif;
+    background-color:  #E5E7E9;
+    padding: 25px;
+    padding-left: 40px;
+  }
+  #topnav{
+    position: absolute;
+    right: 75px;
+  }
+  h1{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: #800080;
+  }
+  .bold{
+    font-weight: bold;
+  }
+  .light{
+    margin-left: 25px;
+  }
+  input[type=text], select, textarea{
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  input[type=submit] {
+    width: 25%;
+    background-color: #800080;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #reviewlabel{
+    display: inline-block;
+    vertical-align: top;
+  }
+  </style>
+  <body>
+    <div id="container">
+        <!-- flash messages -->
+      {% if messages %}
+          {% for message in messages %}
+              <p class=flash> {{message}}<p>
+          {% endfor %}
+      {% endif %}
+        <!-- top nav with home and logout links -->
+      <div id = "topnav">
+        <a href = "/books">Home</a>
+        <a href = "/logout">Logout</a>
+      </div>
+        <!-- form to add a new book and review -->
+      <h1> Add a New Book Title and a Review: </h1>
+      <form class="addbook" action='/process' method='post'>
+        {% csrf_token %}
+        <label for="title" class = "bold">Book Title:</label>
+        <input type="text" name="title"><br><br>
+        <label for="author" class = "bold">Author:</label><br><br>
+        <label for="author_list" class = "light">Choose from the list:</label>
+        <select name = "author">
+          {% for author in authors %}
+          <option value = "{{author}}"> {{author}}</option>
+          {% endfor %}
+        </select><br><br>
+        <label for="author_input" class = "light">Or add a new author:</label>
+        <input type="text" name="author"><br><br>
+        <label for="review" class = "bold" id="reviewlabel">Review:</label>
+        <textarea name = "content" rows="4" cols="50"></textarea><br><br>
+        <label for="rating" class = "bold">Rating:</label>
+        <input type="number" name="rating" min="1" max="5"> stars<br><br>
+        <input type='submit' value='Add Book and Review'>
+      </form>
+    </div>
+  </body>
+</html>

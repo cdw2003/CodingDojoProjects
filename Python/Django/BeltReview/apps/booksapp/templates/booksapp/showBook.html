@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> Belt Reviewer </title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static '/booksapp/css/style.css' %}" charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+  </head>
+  <style>
+    #container{
+      background-color:  #E5E7E9;
+      font-family: 'Arimo', sans-serif;
+      padding: 20px;
+    }
+    #topnav{
+      display: inline-block;
+      position: absolute;
+      right: 75px;
+      top: 25px;
+    }
+    h1{
+      color: #800080;
+      margin-bottom: 5px;
+    }
+    h3{
+      margin-top: 15px;
+      margin-bottom: 30px;
+    }
+    #reviews{
+      display: inline-block;
+      width: 625px;
+    }
+    #addreview{
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 75px;
+    }
+    select, textarea{
+      width: 85%;
+      padding: 12px 20px;
+      margin: 8px 10px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type=submit] {
+      width: 25%;
+      background-color: #800080;
+      color: white;
+      padding: 10px 15px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    h3{
+      color:  #800080;
+    }
+    .italic{
+      font-style: italic;
+    }
+    .bold{
+      font-weight: bold;
+    }
+    p{
+      padding: 5px;
+      margin-top: 5px;
+    }
+
+  </style>
+  <body>
+    <div id="container">
+        <!-- flash messages -->
+      {% if messages %}
+          {% for message in messages %}
+              <p class=flash> {{message}}<p>
+          {% endfor %}
+      {% endif %}
+        <!-- top nav with home and logout links -->
+      <div id = "topnav">
+        <a href = "/books">Home</a>
+        <a href = "/logout">Logout</a>
+      </div>
+        <!-- book title and author -->
+      <h1> {{books.title}} </h1>
+      <h3> Author: {{books.author}} </h3>
+        <!-- display books and reviews -->
+      <div id = "reviews">
+        <h1> Reviews: </h1>
+        {% for review in reviews %}
+        <hr>
+        <p class="bold">Rating: {{review.rating}} </p>
+        <p><a href = "/user/{{review.user_id}}">{{review.user.name}}</a> says:</p>
+        <p class = "italic">{{review.content}}</p>
+        <p class = "italic"> Posted on {{review.created_at.date}}</p>
+          <!-- form to delete review if posted by user -->
+          {% if review.user_id == request.session.user %}
+            <form class="delete" action='/remove/{{review.id}}' method='post'>
+              {% csrf_token %}
+              <input type='submit' value='Delete this Review'>
+            </form></td>
+          {% endif %}
+        {% endfor %}
+      </div>
+        <!-- form to add reviews -->
+      <div id = "addreview">
+        <h3> Add a Review: </h3>
+        <form class="addreview" action='/reviews/{{books.id}}' method='post'>
+          {% csrf_token %}
+          <label for="review" class = "bold">Review:</label>
+          <textarea name="content" rows="4" cols="50"></textarea><br>
+          <label for="rating" class = "bold">Rating:</label>
+          <input type="number" name="rating" min="1" max="5" placeholder="stars"><br>
+          <input type='submit' value='Submit Review'>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
