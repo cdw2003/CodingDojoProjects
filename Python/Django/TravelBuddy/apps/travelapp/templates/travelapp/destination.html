@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Travel Buddy</title>
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+  </head>
+  <style>
+    #container{
+      background-color: #D3D3D3;
+      font-family: 'Arimo', sans-serif;
+      padding: 20px;
+    }
+    h1{
+      color: #800080;
+    }
+    #topnav{
+      position: absolute;
+      right: 50px;
+      top: 30px;
+    }
+  </style>
+  <body>
+    <div id = "container">
+      <!-- top nav bar-->
+      <div id = "topnav">
+        <a href = "/schedule">Home</a>
+        <a href = "/logout">Logout</a>
+      </div>
+      <!-- details about the trip -->
+      <div id = "tripdetails">
+        {% for trip in trips %}
+        <h1> {{trip.destination}} </h1>
+        <h3> Planned By: {{trip.planner.name}}</h3>
+        <h3> Description: {{trip.description}}</h3>
+        <h3> Travel Date From: {{trip.date_from.date}}</h3>
+        <h3> Travel Date To: {{trip.date_to.date}}</h3>
+        {% endfor %}
+      </div>
+      <!-- list of other users joining the trip -->
+      <div id = "travelers">
+        <h1> Other users' joining the trip: </h1>
+        {% for traveler in travelers %}
+        <h4>{{traveler.traveler.name}}</h4>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> Travel Buddy </title>
+    <title> Belt Reviewer </title>
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+  </head>
+  <style>
+    #container{
+      background-color: #D3D3D3;
+      font-family: 'Arimo', sans-serif;
+      padding: 20px;
+    }
+    #topnav{
+      position: absolute;
+      right: 50px;
+      top: 30px;
+    }
+    h1{
+      color: #800080;
+    }
+    input[type=text]{
+      width: 50%;
+      padding: 12px 20px;
+      margin: 8px 10px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type=submit] {
+      width: 25%;
+      background-color: #800080;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type=date]{
+      width: 25%;
+      padding: 12px 20px;
+      margin: 8px 10px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .bold{
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <div id="container">
+        <!-- flash messages -->
+      {% if messages %}
+          {% for message in messages %}
+              <p class=flash> {{message}}<p>
+          {% endfor %}
+      {% endif %}
+        <!-- top nav with home and logout links -->
+      <div id = "topnav">
+        <a href = "/schedule">Home</a>
+        <a href = "/logout">Logout</a>
+      </div>
+        <!-- form to add a new trip -->
+      <h1> Add a Trip: </h1>
+      <form class="addtrip" action='/process' method='post'>
+        {% csrf_token %}
+        <label for="title" class = "bold">Destination:</label>
+        <input type="text" name="destination"><br>
+        <label for="description" class = "bold">Description:</label>
+        <input type="text" name="description"><br>
+        <label for="date_from" class = "bold">Travel Date From:</label>
+        <input type="date" name="date_from" min="2017-06-26"><br>
+        <label for="date_to" class = "bold">Travel Date To:</label>
+        <input type="date" name="date_to" min="2017-06-26"><br>
+        <input type='submit' value='Add'>
+      </form>
+    </div>
+  </body>
+</html>

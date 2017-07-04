@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <title>Travel Buddy</title>
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+  </head>
+  <style>
+    #header{
+      background-color: #D3D3D3;
+      font-family: 'Arimo', sans-serif;
+      padding: 20px;
+    }
+    #logout{
+      position: absolute;
+      right: 50px;
+      top: 30px;
+    }
+    table {
+      width: 85%;
+      margin-bottom: 15px;
+      margin-left: 30px;
+    }
+    td, th {
+      text-align: left;
+      padding: 8px;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    h2{
+      margin-top: 50px;
+      color: #800080;
+    }
+    #addplan{
+      position: absolute;
+      right: 200px;
+    }
+  </style>
+  <body>
+    <div id = "header">
+      {% if messages %}
+        {% for message in messages %}
+            <p style="color: red"> {{message}}<p>
+        {% endfor %}
+      {% endif %}
+      <!-- top nav bar -->
+      <h1>Hello, {{name}}!</h1>
+      <a href = "/logout" id = "logout">logout</a>
+      <!-- trip schedules for logged in user -->
+      <h2>Your Trip Schedules</h2>
+      <table>
+        <tr>
+          <th>Destination</th>
+          <th>Travel Start Date</th>
+          <th>Travel End Date</th>
+          <th>Plan</th>
+        </tr>
+      {% for trip in trips %}
+        <tr>
+          <td><a href = "/destination/{{trip.trip.id}}">{{trip.trip.destination}}</a></td>
+          <td>{{trip.trip.date_from.date}}</td>
+          <td>{{trip.trip.date_to.date}}</td>
+          <td>{{trip.trip.description}}</td>
+        </tr>
+      {% endfor %}
+      </table>
+      <!-- trip schedules for other users -->
+      <h2>Other User's Travel Plans</h2>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Destination</th>
+          <th>Travel Start Date</th>
+          <th>Travel End Date</th>
+          <th>Do You Want to Join?</th>
+        </tr>
+      {% for othertrip in othertrips %}
+        <tr>
+          <td>{{othertrip.planner.name}}</td>
+          <td>{{othertrip.destination}}</td>
+          <td>{{othertrip.date_from.date}}</td>
+          <td>{{othertrip.date_to.date}}</td>
+          <div id = "join"><td><form action='/join/{{othertrip.id}}' method='post'>
+            {% csrf_token %}
+            <input type='submit' value='Join'>
+          </form><td></div>
+        </tr>
+      {% endfor %}
+      </table>
+      <a href = "/add_trip" id = "addplan">Add Travel Plan</a>
+    </div>
+  </body>
+</html>
