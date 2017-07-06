@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <title>Quotes</title>
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+  </head>
+  <style>
+    *{
+      padding: 0px;
+      margin: 0px;
+    }
+    #container{
+      background-color: #D3D3D3;
+      font-family: 'Arimo', sans-serif;
+      padding: 20px;
+      height: 800px;
+    }
+    #logout{
+      position: absolute;
+      right: 50px;
+      top: 30px;
+    }
+    #quotes{
+      width: 450px;
+      height: 650px;
+      display: inline-block;
+      border: 1px solid black;
+      padding: 10px;
+      overflow: auto;
+    }
+    #rightside{
+      width: 450px;
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 150px;
+      position: absolute;
+      top: 60px;
+    }
+    #favorites{
+      border: 1px solid black;
+      padding: 10px;
+      height: 300px;
+      overflow: auto;
+    }
+    #contribute{
+      width: 800px;
+      margin-top: 50px;
+    }
+    .quote, .favorite{
+      border: 1px solid black;
+      padding: 10px;
+    }
+    h2{
+      color: #800080;
+      margin-top: 35px;
+      margin-bottom: 15px;
+    }
+    .italic{
+      font-style: italic;
+    }
+    p{
+      margin-top: 10px;
+    }
+    form{
+      margin-top: 15px;
+    }
+  </style>
+  <body>
+    <div id = "container">
+      {% if messages %}
+        {% for message in messages %}
+            <p style="color: red"> {{message}}<p>
+        {% endfor %}
+      {% endif %}
+      <!-- top nav bar -->
+      <h1>Hello, {{name}}!</h1>
+      <a href = "/logout" id = "logout">logout</a>
+      <!-- all quotes posted not including user favorites -->
+      <h2>Quotable Quotes</h2>
+      <div id = "quotes">
+        {% for quote in quotes %}
+        <div class = "quote">
+          <h4>{{quote.author}}: {{quote.quote}}</h4>
+          <p class = "italic"> Posted by <a href = "/user/{{quote.poster_id}}">{{quote.poster.name}}</a></p>
+          <div id = "add"><form action='/favorites/{{quote.id}}' method='post'>
+            {% csrf_token %}
+            <input type='submit' value='Add to My List'>
+          </form></div>
+        </div><br>
+        {% endfor %}
+      </div>
+      <!-- displays user's favorite quotes -->
+      <div id = "rightside">
+        <h2>Your Favorites</h2>
+        <div id = "favorites">
+          {% for favorite in favorites %}
+          <div class = "favorite">
+            <h4>{{favorite.quote.author}}: {{favorite.quote.quote}}</h4>
+            <p class = "italic"> Posted by <a href = "/user/{{favorite.quote.poster_id}}">{{favorite.quote.poster.name}}</a></p>
+            <div id = "remove"><form action='/remove/{{favorite.quote_id}}' method='post'>
+              {% csrf_token %}
+              <input type='submit' value='Remove from My List'>
+            </form></div>
+          </div><br>
+          {% endfor %}
+        </div>
+      <!-- form for user to display new quotes -->
+        <div id = "contribute">
+          <h2> Contribute a Quote: </h2>
+          <form class="addquote" action='/add' method='post'>
+            {% csrf_token %}
+            <label for="author" class = "bold">Quoted By:</label>
+            <input type="text" name="author"><br><br>
+            <label for="quote" class = "bold">Message:</label><br><br>
+            <textarea name='quote'  rows="4" cols="50" style="width: 50%" placeholder = "Enter a quote..."></textarea><br><br>
+            <input type='submit' value='Submit'>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

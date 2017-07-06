@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Quotes</title>
+    <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
+  </head>
+  <style>
+    #container{
+      background-color: #D3D3D3;
+      font-family: 'Arimo', sans-serif;
+      padding: 20px;
+    }
+    #topnav{
+      position: absolute;
+      right: 50px;
+      top: 30px;
+    }
+    a, p{
+      display: inline-block;
+    }
+    h1{
+      color: #800080;
+    }
+    .quotes{
+      margin-left: 10px;
+    }
+    .red{
+      color: red;
+      margin-left: 20px;
+    }
+    .black{
+      margin-left: 5px;
+    }
+  </style>
+  <body>
+    <div id = "container">
+      <!-- top nav bar-->
+      <div id = "topnav">
+        <a href = "/quotes">Dashboard</a>
+        <p> | </p>
+        <a href = "/logout">Logout</a>
+      </div>
+      <!-- details about the user -->
+      <div id = "userdetails">
+        {% for user in users %}
+        <h1> Posts By: {{user.name}} </h1>
+        <h3> Count: {{num_quotes}} </h3>
+        {% endfor %}
+        <div id = "userquotes">
+          {% for quote in quotes %}
+          <p class = "red">{{quote.author}}: <p class = "black"> {{quote.quote}}</p></p><br>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
