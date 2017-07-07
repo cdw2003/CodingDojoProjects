@@ -44,11 +44,23 @@ public class BankAccount{
   }
 
   public void withdrawMoney(int checking, int saving){
-    this.checkingBalance -= checking;
-    this.savingsBalance -= saving;
-    totalMoney -= checking;
-    totalMoney -= checking;
-    System.out.println("Your balance is now $"+ this.checkingBalance + " in checking and $"+ this.savingsBalance + " in savings." );
+    if(this.checkingBalance > 0){
+      this.checkingBalance -= checking;
+      totalMoney -= checking;
+      System.out.println("Your checking balance is now $" + this.checkingBalance);
+    }
+    else{
+      System.out.println("Your checking account is empty.");
+    }
+
+    if(this.savingsBalance > 0){
+      this.savingsBalance -= saving;
+      totalMoney -= saving;
+      System.out.println("Your savings balance is now $" + this.savingsBalance);
+    }
+    else{
+      System.out.println("Your savings account is empty.");
+    }
   }
 
   public static long getTotalMoney(){
