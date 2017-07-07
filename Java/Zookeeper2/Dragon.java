@@ -4,6 +4,9 @@ public class Dragon extends Mammal{
 
   protected int energyLevel = 300;
 
+  public void displayEnergy(){
+    System.out.println("My energy level is:" + energyLevel);
+  }
 
   public int fly(){
     System.out.println("Arrrghhh.");
