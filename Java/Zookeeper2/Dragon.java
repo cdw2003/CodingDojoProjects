@@ -22,5 +22,4 @@ public class Dragon extends Mammal{
     energyLevel -= 100;
     return energyLevel;
   }
-
 }
