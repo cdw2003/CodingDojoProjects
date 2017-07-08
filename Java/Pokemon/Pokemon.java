@@ -7,7 +7,6 @@ public class Pokemon{
   protected static int countPokemon = 0;
 
   public Pokemon(){
-    countPokemon ++;
   }
 
   public Pokemon(String name, String type, int health){
