@@ -2,7 +2,7 @@ import java.util.*;
 
 public abstract class PokemonAbstract implements OperatePokemon{
 
-  public void createPokemon(String name, String type, int health){
+  public createPokemon(String name, String type, int health){
         return new Pokemon(name, type, health);
   }
 
