@@ -1,14 +1,19 @@
-public class PokemonTest {
-  public static void main(String[] args) {
-    Pokedex a = new Pokedex();
-    Pokedex b = new Pokedex();
-    a.createPokemon("Emily", "Bug", 100);
-    b.createPokemon("Flor", "Dragon", 50);
+public class PokemonTest{
+  public static void main(String[] args){
+    Pokedex pokedex = new Pokedex();
 
-    a.attackPokemon(b);
-    b.attackPokemon(c);
+    Pokemon pikachu = pokedex.createPokemon("pikachu", "electric", 120);
+    Pokemon eevee = pokedex.createPokemon("eevee", "normal", 85);
+    Pokemon rowlet = pokedex.createPokemon("rowlet", "grass", 50);
+    Pokemon bulbasaur = pokedex.createPokemon("bulbasaur", "grass", 30);
 
-    Pokedex.pokemonInfo(a);
-    Pokedex.pokemonInfo(b);
+    pokedex.pokemonInfo(bulbasaur);
+    pokedex.pokemonInfo(rowlet);
+    pokedex.pokemonInfo(pikachu);
+
+    pokedex.attackPokemon(pikachu);
+    pokedex.pokemonInfo(pikachu);
+
+    Pokemon.getCountPokemon();
   }
 }
