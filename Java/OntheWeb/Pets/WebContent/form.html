@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Pets</title>
+		<link href="${pageContext.request.contextPath}/style.css" type="text/css" rel="stylesheet"></link>
+	</head>
+	<body>
+		<div id="dog">
+			<h2>Make a Dog!</h2>
+			<form action = "/Pets/animals/dog" method="get">
+				<label for= "name">Name</label>
+				<input type = "text" name = "name"><br>
+				<label for= "breed">Breed</label>
+				<input type = "text" name = "breed"><br>
+				<label for= "weight">Weight (lb)</label>
+				<input type = "text" name = "weight"><br>
+				<input type = "submit" value = "Submit">
+			</form>
+		</div>
+		<div id="cat">
+			<h2>Make a Cat!</h2>
+			<form action = "/Pets/animals/cat" method="get">
+				<label for= "name">Name</label>
+				<input type = "text" name = "name"><br>
+				<label for= "breed">Breed</label>
+				<input type = "text" name = "breed"><br>
+				<label for= "weight">Weight (lb)</label>
+				<input type = "text" name = "weight"><br>
+				<input type = "submit" value = "Submit">
+			</form>
+		</div>
+	</body>
+</html>
