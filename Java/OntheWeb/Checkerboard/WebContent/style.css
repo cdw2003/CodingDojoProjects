@@ -1,0 +1,12 @@
+.red{
+	width: 25px;
+	height: 25px;
+	background-color: red;
+	display: inline-block;
+}
+.blue{
+	width: 25px;
+	height: 25px;
+	background-color: blue;
+	display: inline-block;
+}
