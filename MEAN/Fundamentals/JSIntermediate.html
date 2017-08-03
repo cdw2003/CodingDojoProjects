@@ -1,0 +1,40 @@
+<!--- PART 1: print stars ------>
+function star_string(num){
+  var stars = "";
+  for(var i=0; i<num; i++){
+    stars += "*";
+  }
+  console.log(stars);
+  return stars;
+}
+
+<!---- PART 2: print stars from an array ----->
+function draw_stars(arr){
+  var stars = "";
+  for(var i=0; i<arr.length; i++){
+    for(var j=0; j<arr[i]; j++){
+      stars += "*";
+    }
+    console.log(stars);
+    stars = "";
+  }
+}
+
+<!---- PART 3: print letters and stars from an array ----->
+function draw_stars(arr){
+  var stars = "";
+  for(var i=0; i<arr.length; i++){
+    if(typeof arr[i] === "number"){
+      for(var j=0; j<arr[i]; j++){
+        stars += "*";
+      }
+    }
+    if(typeof arr[i] === 'string'){
+      for(var k=0; k<arr[i].length; k++){
+        stars += arr[i].charAt(0).toLowerCase();
+      }
+    }
+    console.log(stars);
+    stars = "";
+  }
+}
