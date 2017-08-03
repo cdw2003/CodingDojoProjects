@@ -1,0 +1,61 @@
+class Deck{
+  constructor(){
+    this.deck = [];
+    }
+
+  reset(){
+    let suits = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
+    let values = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
+    this.deck = [];
+    for(let suit in suits){
+      for(let value in values){
+        this.deck.push(values[value] + " of " + suits[suit]);
+      }
+    }
+    return this;
+  }
+
+  shuffle(){
+    for(var i = 0; i <= this.deck.length; i++){
+      var start = Math.floor(Math.random() * this.deck.length);
+      var end = Math.floor(Math.random() * this.deck.length);
+      var temp = this.deck[start];
+      this.deck[start] = this.deck[end];
+      this.deck[end] = temp;
+    }
+    return this;
+  }
+
+  deal(){
+    return this.deck.pop();
+    }
+}
+
+class Player{
+  constructor(name){
+    this.name = name;
+    this.hand = [];
+  }
+
+  takeCard(deck){
+    this.hand.push(deck.deal());
+    console.log(this.hand);
+    return this;
+  }
+
+  discardCard(){
+    this.hand.pop();
+    console.log(this.hand);
+    return this;
+  }
+}
+
+let deckA = new Deck();
+deckA.reset();
+deckA.shuffle();
+
+
+let player1 = new Player("Cheryl");
+player1.takeCard(deckA);
+player1.takeCard(deckA);
+player1.discardCard();
