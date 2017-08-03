@@ -1,0 +1,49 @@
+var _ = {
+   map: function(array, callback) {
+     var results = [];
+     for(var i=0; i<array.length; i++){
+       array[i] = callback(array[i]);
+       results.push(array[i]);
+     }
+     return results;
+   },
+
+   reduce: function(array, callback, memo) {
+     const results = [].concat(array);
+     if(!memo){
+       memo = results.pop();
+     }
+     for(var i=0; i<array.length; i++){
+       memo = callback(array[i], memo)
+     }
+     return memo;
+   },
+
+   find: function find(array, callback) {
+     for(var i=0; i<array.length; i++){
+       if(callback(array[i])){
+         return array[i];
+       }
+     }
+   },
+
+   filter: function(array, callback)) {
+     var results = [];
+     for(var i=0; i<array.length; i++){
+       if(callback(array[i])){
+         results.push(array[i]);
+       }
+     }
+     return results;
+   },
+
+   reject: function reject(array, callback) {
+     var results = [];
+     for(var i=0; i<array.length; i++){
+       if(!callback(array[i])){
+         results.push(array[i]);
+       }
+     }
+     return results;
+   }
+}
