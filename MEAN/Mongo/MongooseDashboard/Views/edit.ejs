@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mongoose Dashboard</title>
+    </head>
+    <body>
+        <h1>Edit your Mongoose </h1>
+
+        <% if(typeof(errors) != 'undefined') { %>
+           <% for (var x in errors) { %>
+            <h3><%= errors[x].message %></h3>
+          <% } %>
+        <% } %>
+
+        Current Name:  <%= mongeese[0].name %><br>
+        Current Description:  <%= mongeese[0].description %><br>
+        <form action="/mongooses/<%= mongeese[0].id %>" method="post">
+            <br>New Name:<br> <input type="text" name="name"><br>
+            <br>New Description:<br>
+            <textarea name="description" id="description" cols="30" rows="10"></textarea><br>
+            <br>New Age:</br> <input type="text" name="age"><br><br>
+            <input type="submit" value="Update">
+        </form><br>
+
+        <a href= "/"> Back </a>
+
+    </body>
+</html>

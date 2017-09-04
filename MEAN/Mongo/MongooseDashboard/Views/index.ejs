@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Mongoose Dashboard</title>
+    </head>
+    <body>
+        <h1>Welcome to Mongoose Dashboard</h1>
+        <table border =1>
+            <tr>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            <% for (var x in mongeese){ %>
+            <tr>
+                <td><%= mongeese[x].name %></td>
+                <td>
+                    <a href="/mongooses/edit/<%= mongeese[x]._id %>"> Edit</a>
+                    <a href="/mongooses/<%= mongeese[x]._id %>"> Info</a>
+                    <a href="/mongooses/destroy/<%= mongeese[x]._id %>"> Delete</a>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+
+        <br>
+        <a href= "/mongooses/new"> Click Here to create more mongoose </a>
+
+    </body>
+</html>
